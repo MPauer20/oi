@@ -81,4 +81,4 @@ if %mes%==2 (
     )
 )
 ```
-
+Para cada mês, o script atribui o número correto de dias.No caso de fevereiro (%mes%==2), ele verifica se o ano é bissexto. Se for, fevereiro terá 29 dias; caso contrário, terá 28 dias.
