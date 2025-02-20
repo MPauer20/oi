@@ -82,3 +82,53 @@ if %mes%==2 (
 )
 ```
 Para cada mês, o script atribui o número correto de dias.No caso de fevereiro (%mes%==2), ele verifica se o ano é bissexto. Se for, fevereiro terá 29 dias; caso contrário, terá 28 dias.
+
+ # Definindo a quantidade de **dias** no mês
+ ```batch
+if %mes%==3 set days=31
+if %mes%==4 set days=30
+if %mes%==5 set days=31
+if %mes%==6 set days=30
+if %mes%==7 set days=31
+if %mes%==8 set days=31
+if %mes%==9 set days=30
+if %mes%==10 set days=31
+if %mes%==11 set days=30
+if %mes%==12 set days=31
+
+echo O número de dias no mês %mes% do ano %ano% é %days%
+
+for /L %%i in (1,1,%days%) do (
+    mkdir %%i
+```
+
+Aqui, o script pega o mês e define quantos dias ele tem. Para isso, ele verifica mês a mês. A lógica é simples: 
+- Se for **janeiro**, o mês terá **31 dias**.
+- Se for **fevereiro**, o script verifica se o ano é bissexto:
+  - Se for bissexto, o mês terá **29 dias**.
+  - Caso contrário, **fevereiro** terá **28 dias**.
+- Para os outros meses, o script atribui automaticamente a quantidade correta de dias, como 30 dias para abril, junho, setembro e novembro, e 31 dias para os outros meses.
+
+  ## Criando as pastas para cada dia do mês
+
+  Função: Esse é um loop que vai criar uma pasta para cada dia do mês. Ele utiliza a estrutura de repetição for /L, que permite especificar um intervalo e um incremento.
+   ```batch
+   echo O número de dias no mês %mes% do ano %ano% é %days%
+
+   for /L %%i in (1,1,%days%) do (
+    mkdir %%i
+   ```
+   
+  **%%i** é a variável de controle do loop.
+  
+  (1,1,%days%) significa que o loop começa em 1 e vai até o valor de %days% (o número de dias do mês). A cada iteração, o valor de %%i aumenta de 1 em 1.
+  
+  mkdir %%i cria uma pasta com o nome do número do dia. Por exemplo, se o mês tiver 31 dias, ele vai criar pastas chamadas de 1, 2, 3, ..., 31.
+
+
+  # Desafios e soluções
+ - Tive erros na verificação do ano bissexto e na declaração de variáveis
+ - Resolvi os problemas dando algumas lidas nos codigos ate encontralos
+
+   # O que aprendi
+   Aprendi que cada codigo escrito, devemos ter total atenção como no nosso dia a dia e que devemos pensar com logica para a resolução de problemas 
